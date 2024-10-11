@@ -19,6 +19,11 @@ describe('User', () => {
     expect(user).toHaveProperty('id')
   })
 
+   it('username is gandalf', async () => {
+    expect(user.username).toEqual('gandalf');
+   });
+
+
   /**
    * Create more tests
    * E.g. check that the username of the created user is actually gandalf
