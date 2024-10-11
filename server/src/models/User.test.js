@@ -23,9 +23,4 @@ describe('User', () => {
     expect(user.username).toEqual('gandalf');
    });
 
-
-  /**
-   * Create more tests
-   * E.g. check that the username of the created user is actually gandalf
-   */
 })
