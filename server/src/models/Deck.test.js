@@ -1,18 +1,20 @@
 const { describe, it, expect, beforeAll, afterAll } = require('@jest/globals')
 const { Deck } = require('.')
-const db = require('../db/config')
+const { sequelize } = require('../db/config')
 
 // define in global scope
 let deck
 
 // clear db and create new user before tests
 beforeAll(async () => {
-  await db.sync({ force: true })
-  user = await Deck.create({ name: 'The Fellowship', xp: 100 })
+  await sequelize.sync({ force: true })
+  deck = await Deck.create({ name: 'The Fellowship', xp: 100 })
 })
 
 // clear db after tests
-afterAll(async () => await db.sync({ force: true }))
+afterAll(async () => {
+    await sequelize.close()
+});
 
 describe('Deck', () => {
     it('has an id', async () => {
@@ -20,7 +22,7 @@ describe('Deck', () => {
   })
 
     it('has an xp', async () => {
-    expect(user).toHaveProperty('xp')
+    expect(deck).toHaveProperty('xp')
   })
 
     it('name is The Fellowship', async () => {

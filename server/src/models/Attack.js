@@ -1,4 +1,5 @@
-const { db, DataTypes, Model } = require('../db/config.js');
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../db/config.js');
 
 class Attack extends Model {}
 
@@ -24,6 +25,8 @@ Attack.init({
 },
 
 {
-    sequelize: db,
+    sequelize,
     modelName: "Attack"
-})
+}); 
+
+module.exports = Attack;

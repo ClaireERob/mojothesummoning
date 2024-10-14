@@ -1,4 +1,5 @@
-const { db, DataTypes, Model } = require('../db/config.js');
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../db/config.js');
 
 class Deck extends Model {}
 
@@ -19,7 +20,7 @@ Deck.init({
     }
 },
 {
-    sequelize: db,
+    sequelize,
     modelName: "Deck"
 })
 
